@@ -1,52 +1,52 @@
-# Register Services (RegisterServices)
+# Register Services (`RegisterServices`)
 
-`RegisterServices` is the method in a plugin used to **register dependency injection services**.
+`RegisterServices` is the method plugins use to **register services with the dependency injection (DI) container**.
 
-Its primary role is to establish **dependencies**. In modern software development, we use a "Dependency Injection (DI)" container to manage objects. Through this method, you can:
+Its primary purpose is to configure **dependencies**. In modern software development, a DI container manages object creation and lifetime. Through this method, you can:
 
-1.  **Request Services (Consumer)**: Configure external tools your plugin needs (like HTTP clients, database connections).
-2.  **Provide Services (Provider)**: Register your business logic classes so they can be used by other parts of your plugin or even other plugins.
+1.  **Request Services (Consumer)**: Configure external tools your plugin needs, such as HTTP clients or database connections.
+2.  **Provide Services (Provider)**: Register your business logic classes so they can be consumed by other parts of your plugin—or even by other plugins.
 
-Meanwhile, the dependency injection container automatically injects required services into consumers and manages their lifecycle.
+The DI container automatically injects required services into consumers and manages their lifecycle for you.
 
 ## Hosting Model
 
-SharwAPI uses the "Hosting Model" of [Dependency Injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) to manage objects. This means you don't need to manually write `new ServiceClass()` in your code; instead, the main program automatically manages objects and injects dependencies based on your configuration.
+SharwAPI uses the [Dependency Injection hosting model](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) to manage objects. This means you don't need to manually write `new ServiceClass()` in your code—the host application automatically manages object creation and injects dependencies based on your registration.
 
-This approach offers two main advantages:
-1. **Lifecycle Management**: The system automatically handles object disposal, preventing memory leaks.
-2. **Instance Sharing**: Easily achieve data sharing across plugins or requests.
+This approach offers two key benefits:
+1. **Lifecycle Management**: The system automatically handles object disposal, helping prevent memory leaks.
+2. **Instance Sharing**: You can easily share data across plugins or requests by controlling service lifetime.
 
 ## Service Lifetimes
 
-When registering services, you need to choose the appropriate [Dependency Injection Lifetime](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/service-lifetimes) based on business needs, which determines how long an object exists in memory.
+When registering services, choose the appropriate [service lifetime](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/service-lifetimes) based on your business needs. This determines how long an instance lives in memory.
 
 ### 1. Transient
-* **Behavior**: A new object is created every time the service is requested. Used and discarded.
-* **Use Case**: Lightweight, stateless utility classes (like simple calculators, data formatters).
+* **Behavior**: A new instance is created every time the service is requested.
+* **Use Case**: Lightweight, stateless utility classes (e.g., simple calculators, data formatters).
 * **Example**: `services.AddTransient<MyService>();`
 
 ### 2. Scoped
-* **Behavior**: Within the processing of a single HTTP request, multiple requests for the service return the same object. The object is disposed of when the request ends.
-* **Use Case**: Database contexts (`DbContext`) or business services that need to maintain state within a request. This is the most common pattern in development.
+* **Behavior**: Within a single HTTP request, multiple resolutions of the service return the same instance. The instance is disposed when the request completes.
+* **Use Case**: Database contexts (`DbContext`) or business services that need to maintain state within a request. This is the most common pattern in web development.
 * **Example**: `services.AddScoped<MyService>();`
 
 ### 3. Singleton
-* **Behavior**: Only one object exists for the entire lifetime of the application. All requests and plugins share this single instance.
-* **Use Case**: Caching services, global configuration reading, background scheduled tasks.
+* **Behavior**: A single instance is created for the entire application lifetime. All requests and plugins share this instance.
+* **Use Case**: Caching services, global configuration readers, or background scheduled tasks.
 * **Example**: `services.AddSingleton<MyService>();`
 
 ## Common Operations
 
-### Requesting External Resources (I am a Consumer)
+### Requesting External Resources (Consumer Pattern)
 
-When your plugin needs to access external networks, you should register the corresponding client (e.g., using `HttpClient`).
+When your plugin needs to access external networks, register the corresponding client (e.g., `HttpClient`).
 
 ```csharp
 // Register a client named "google" and preset the base address
 services.AddHttpClient("google", client =>
 {
-    client.BaseAddress = new Uri("https://google.com");
+    client.BaseAddress = new Uri("https://google.com  ");
     client.DefaultRequestHeaders.Add("User-Agent", "SharwAPI-Plugin");
 });
 
