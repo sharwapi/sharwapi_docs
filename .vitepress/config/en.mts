@@ -1,112 +1,154 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from "vitepress";
 
 export const en = defineConfig({
-  lang: 'en',
+  lang: "en",
   description: "A dynamically built API powered by plugins",
   themeConfig: {
-    nav: [
-      { text: 'Guide', link: '/en/guide/what-is-sharwapi' }
-    ],
+    nav: [{ text: "Guide", link: "/en/guide/what-is-sharwapi" }],
 
     sidebar: [
       {
-        text: 'Start',
+        text: "Start",
         items: [
-          { text: 'What is SharwAPI', link: '/en/guide/what-is-sharwapi'},
-          { text: 'Getting Started', link: '/en/guide/getting-started'},
-          { text: 'Build Manually', link: '/en/guide/build'},
-          { text: 'Configuration', link: '/en/guide/configuration'}
-        ]
+          { text: "What is SharwAPI", link: "/en/guide/what-is-sharwapi" },
+          { text: "Getting Started", link: "/en/guide/getting-started" },
+          { text: "Build Manually", link: "/en/guide/build" },
+          { text: "Configuration", link: "/en/guide/configuration" },
+        ],
       },
       {
-        text: 'Plugins',
+        text: "Plugins",
         items: [
-          { 
-            text: 'Basics',
+          {
+            text: "Basics",
             items: [
-              { text: 'Introduction', link: '/en/plugin/introduction'},
-              { text: 'Getting Started', link: '/en/plugin/start'},
-              { text: 'Structure', link: '/en/plugin/basic'},
-            ]
+              { text: "Introduction", link: "/en/plugin/introduction" },
+              { text: "Getting Started", link: "/en/plugin/start" },
+              { text: "Structure", link: "/en/plugin/basic" },
+            ],
           },
-          { 
-            text: 'Core Interfaces',
+          {
+            text: "Core Interfaces",
             items: [
-              { text: 'Registering Services', link: '/en/plugin/services'},
-              { text: 'Route Registration', link: '/en/plugin/routes'},
-              { text: 'Configuring Middleware', link: '/en/plugin/middleware'},
-              { text: 'Plugin Configuration', link: '/en/plugin/plugin-config'},
-              { text: 'Plugin Data Directory', link: '/en/plugin/data-directory'},
-              { text: 'Logging', link: '/en/plugin/logging'},
-            ]
+              { text: "Registering Services", link: "/en/plugin/services" },
+              { text: "Route Registration", link: "/en/plugin/routes" },
+              { text: "Configuring Middleware", link: "/en/plugin/middleware" },
+              {
+                text: "Plugin Configuration",
+                link: "/en/plugin/plugin-config",
+              },
+              {
+                text: "Plugin Data Directory",
+                link: "/en/plugin/data-directory",
+              },
+              { text: "Logging", link: "/en/plugin/logging" },
+            ],
           },
-          { 
-            text: 'Advanced Features',
+          {
+            text: "Advanced Features",
             items: [
-              { text: 'Management Endpoints', link: '/en/plugin/management-endpoints'},
-              { text: 'Dependency Resolution', link: '/en/plugin/dependencies'},
-              { text: '.sharw Plugin Package', link: '/en/plugin/sharw-package'},
-            ]
-          }
-        ] 
+              {
+                text: "Management Endpoints",
+                link: "/en/plugin/management-endpoints",
+              },
+              {
+                text: "Dependency Resolution",
+                link: "/en/plugin/dependencies",
+              },
+              {
+                text: ".sharw Plugin Package",
+                link: "/en/plugin/sharw-package",
+              },
+            ],
+          },
+        ],
       },
       {
-        text: 'Architecture',
+        text: "Architecture",
         items: [
-          { text: 'Overview', link: '/en/architecture/overview'},
-          { text: 'Request Flow', link: '/en/architecture/request-flow'},
-          { text: 'Plugin System', link: '/en/architecture/plugin-system'},
-          { text: 'Dependency Resolution', link: '/en/architecture/dependency-resolution'},
-          { text: 'Logging System', link: '/en/architecture/logging'}
-        ]
+          { text: "Overview", link: "/en/architecture/overview" },
+          { text: "Request Flow", link: "/en/architecture/request-flow" },
+          { text: "Plugin System", link: "/en/architecture/plugin-system" },
+          {
+            text: "Dependency Resolution",
+            link: "/en/architecture/dependency-resolution",
+          },
+          { text: "Logging System", link: "/en/architecture/logging" },
+        ],
       },
       {
-        text: 'Migrating from Older Versions',
+        text: "Migrating from Older Versions",
         items: [
           {
-            text: 'Upgrading from v0.1.0 to v0.2.0',
+            text: "Upgrading from v0.1.0 to v0.2.0",
             items: [
-              { text: 'User-side Changes', link: '/en/migration/v0.1.0-to-v0.2.0/user'},
-              { text: 'Developer-side Changes', link: '/en/migration/v0.1.0-to-v0.2.0/developer'},
-            ]
+              {
+                text: "User-side Changes",
+                link: "/en/migration/v0.1.0-to-v0.2.0/user",
+              },
+              {
+                text: "Developer-side Changes",
+                link: "/en/migration/v0.1.0-to-v0.2.0/developer",
+              },
+            ],
           },
           {
-            text: 'Upgrading from v0.2.1 to v0.2.2',
+            text: "Upgrading from v0.2.1 to v0.2.2",
             items: [
-              { text: 'User-side Changes', link: '/en/migration/v0.2.1-to-v0.2.2/user'},
-              { text: 'Developer-side Changes', link: '/en/migration/v0.2.1-to-v0.2.2/developer'},
-            ]
+              {
+                text: "User-side Changes",
+                link: "/en/migration/v0.2.1-to-v0.2.2/user",
+              },
+              {
+                text: "Developer-side Changes",
+                link: "/en/migration/v0.2.1-to-v0.2.2/developer",
+              },
+            ],
           },
           {
-            text: 'Upgrading from v0.2.2 to v0.2.3',
+            text: "Upgrading from v0.2.2 to v0.2.3",
             items: [
-              { text: 'User-side Changes', link: '/en/migration/v0.2.2-to-v0.2.3/user'},
-              { text: 'Developer-side Changes', link: '/en/migration/v0.2.2-to-v0.2.3/developer'},
-            ]
+              {
+                text: "User-side Changes",
+                link: "/en/migration/v0.2.2-to-v0.2.3/user",
+              },
+              {
+                text: "Developer-side Changes",
+                link: "/en/migration/v0.2.2-to-v0.2.3/developer",
+              },
+            ],
           },
           {
-            text: 'Upgrading from v0.2.3 to v0.2.4',
+            text: "Upgrading from v0.2.3 to v0.2.4",
             items: [
-              { text: 'User-side Changes', link: '/en/migration/v0.2.3-to-v0.2.4/user'},
-              { text: 'Developer-side Changes', link: '/en/migration/v0.2.3-to-v0.2.4/developer'},
-            ]
-          }
-        ]
+              {
+                text: "User-side Changes",
+                link: "/en/migration/v0.2.3-to-v0.2.4/user",
+              },
+              {
+                text: "Developer-side Changes",
+                link: "/en/migration/v0.2.3-to-v0.2.4/developer",
+              },
+            ],
+          },
+        ],
       },
       {
-        text: 'Changelog',
+        text: "Changelog",
         items: [
-          { text: 'v0.2.4', link: '/en/changelog/v0.2.4'},
-          { text: 'v0.2.3', link: '/en/changelog/v0.2.3'},
-          { text: 'v0.2.2', link: '/en/changelog/v0.2.2'},
-          { text: 'v0.2.1', link: '/en/changelog/v0.2.1'},
-          { text: 'v0.2.0', link: '/en/changelog/v0.2.0'},
-        ]
-      }
+          { text: "v0.2.5", link: "/en/changelog/v0.2.5" },
+          { text: "v0.2.4", link: "/en/changelog/v0.2.4" },
+          { text: "v0.2.3", link: "/en/changelog/v0.2.3" },
+          { text: "v0.2.2", link: "/en/changelog/v0.2.2" },
+          { text: "v0.2.1", link: "/en/changelog/v0.2.1" },
+          { text: "v0.2.0", link: "/en/changelog/v0.2.0" },
+        ],
+      },
     ],
 
     footer: {
-      message: 'This site is powered by <a href="https://www.netlify.com" target="_blank">Netlify</a>'
-    }
-  }
-})
+      message:
+        'This site is powered by <a href="https://www.netlify.com" target="_blank">Netlify</a>',
+    },
+  },
+});
